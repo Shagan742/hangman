@@ -1,0 +1,12 @@
+html {
+    overflow-x:hidden; 
+    
+}
+
+body {
+   background-image:url(imgs/cloverbackground.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:brightness(0.4);
+}
