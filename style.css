@@ -8,5 +8,27 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    filter:brightness(0.4);
+}
+
+.easy {
+    font-size:40px;
+    color:white;
+}
+.medium {
+    font-size:40px;
+    color:white;
+}
+.hard {
+    font-size:40px;
+    color:white;
+}
+
+.mainHeading {
+    color:white;
+    font-size:70px;
+}
+
+h3 {
+    color:white;
+    font-size:35px;
 }

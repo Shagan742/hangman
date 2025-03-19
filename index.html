@@ -21,38 +21,56 @@
 
     <body>
         <main class="container-fluid text-center">
-            <h1 class="my-4">Hangman</h1>
+            <div class="row mt-5">
+                <div class="col">
+                    <h1 class="mainHeading my-4">Hangman</h1>
+                </div>
+            </div>
 
-            <div id="difficultySelection" class="d-none"> 
-                <h3>Select Difficulty:</h3>
-                <button class="btn btn-success difficulty-btn" onclick="startGame('easy')">Easy</button>
-                <button class="btn btn-warning difficulty-btn" onclick="startGame('medium')">Medium</button>
-                <button class="btn btn-danger difficulty-btn" onclick="startGame('hard')">Hard</button>
+            <div id="difficultySelection" class="row my-4 text-center"> 
+                <div class="col">
+                   <h3>Select Difficulty:</h3>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-success difficulty-btn" onclick="startGame('easy')">Easy</button>
+                 
+                    <button class="btn btn-warning difficulty-btn" onclick="startGame('medium')">Medium</button>
+             
+                    <button class="btn btn-danger difficulty-btn" onclick="startGame('hard')">Hard</button>
+                   
+                </div>
+
+            </div>
+
+
+
+
+            <div class="row">
+                <div id="difficultyBox" class="mt-3 p-3 fw-bold d-none"><!--ADD d-none-->
+                </div> 
             </div>
 
 
 
 
 
-            <div id="difficultyBox" class="mt-3 p-3 fw-bold">Difficulty: </div> <!--ADD d-none-->
+            <div id="gameArea" class="row mt-4 d-none"><!--ADD d-none here-->
+                <div class="col">
+                    <h2 id="wordDisplay" class="mb-3">_ _ _ _ _</h2>
+                </div>
 
-
-
-
-
-
-            <div id="gameArea" class="mt-4"><!--ADD d-none here-->
-                <h2 id="wordDisplay" class="mb-3">_ _ _ _ _</h2>
-
-                <div class="mb-3">
+                <div class="col mb-3">
                     <input type="text" id="letterInput" maxlength="1" class="form-control d-inline-block w-auto" placeholder="Enter a letter">
                     <button id="guessBtn" class="btn btn-warning" onclick="guessLetter()">Guess</button>
                 </div>
 
-                <p id="wrongLetters" class="fw-bold text-danger">Wrong Guesses:</p>
-                <img id="shamrock" class="shamrock-img" src="imgs/image6.jpeg" alt="">
+                <div class="col">
+                    <p id="wrongLetters" class="fw-bold text-danger">Wrong Guesses:</p>
+                    <img id="shamrock" class="shamrock-img" src="imgs/image6.jpeg" alt="">
+                </div>
 
-                <div class="mt-4">
+                <div class="col mt-4">
                     <button id="restartBtn" class="btn btn-danger" onclick="restartGame()">Restart Game</button>
                 </div>
 
