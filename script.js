@@ -1,6 +1,6 @@
 //wordlist
 
-const wordList=['Saint', 'Green', 'Golden', 'Rainbow', 'Prize', 'Coin', 'Clover','Leprechaun','Tradition'];
+const wordList=['saint', 'green', 'golden', 'rainbow', 'prize', 'coin', 'clover','leprechaun','tradition'];
 
 //declare variables
 
@@ -17,6 +17,12 @@ function startGame(level) {
     guessedLetters=[];
 
     selectedWord=getRandomWord(level)
+    displayWord='_'.repeat(selectedWord.length);
+
+
+    updateUI()
+
+
 
     updateDifficultyDisplay(level)
 
@@ -29,7 +35,9 @@ function startGame(level) {
     document.getElementById('difficultyBox').classList.remove('d-none');
     document.getElementById('difficultyBox').classList.add('d-block');
 
-    document.getElementById('difficultySelection').classList.add('d-none')
+    document.getElementById('difficultySelection').classList.add('d-none');
+
+    document.getElementById('letterInput').focus(); //allows for not needing to press input box to start typing
 }
 
 function getRandomWord(level) {
@@ -59,3 +67,44 @@ function updateDifficultyDisplay(level) {
         difficultyBox.textContent='Difficulty: hard';
     }
 }
+
+
+function updateUI() {
+    document.getElementById('wordDisplay').textContent=displayWord.split("").join(" "); //displays word with spaces between it in underscores
+}
+
+
+function guessedLetters() {
+    let inputField=document.getElementById('letterInput') // get input box thing
+    let guessedLetter=inputField.value.toLowerCase() //lowercasing everything
+    //check and see if valid input
+
+    if(!guessedLetter.match(/^[a-z]$/)) {
+        alert('Please enter a valid letter'); //alerts user to put in valid letter
+        inputField.value=''; //empties input box
+        return //exit function
+    }
+
+
+    //before the guessed letter is stored in array, the letter must not already be in there
+    if(guessedLetters.includes(guessedLetter)) {
+        alert('Please enter a different letter')
+        inputField.value='';
+        return;
+    }
+
+    //put user's guessed letter in the array
+    guessedLetters.push(guessedLetter);
+
+    if(selectedWord.includes(guessedLetter)) {
+        updateCorrectGuess(guessedLetter)
+    } else {
+        updateWrongGuess(guessedLetter)
+    }
+
+    inputField.value=''; //empties the input box
+    document.getElementById('letterInput').focus() //refocus input field for next guess
+}
+
+
+
