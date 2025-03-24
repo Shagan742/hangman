@@ -1,6 +1,6 @@
 //wordlist
 
-const wordList=['saint', 'green', 'golden', 'rainbow', 'prize', 'coin', 'clover','leprechaun','tradition'];
+const wordList=['saint', 'green', 'golden', 'rainbow', 'prize', 'coin', 'gold','pot', 'clover','leprechaun','tradition'];
 
 //declare variables
 
@@ -71,10 +71,11 @@ function updateDifficultyDisplay(level) {
 
 function updateUI() {
     document.getElementById('wordDisplay').textContent=displayWord.split("").join(" "); //displays word with spaces between it in underscores
+
 }
 
 
-function guessedLetters() {
+function guessLetter() {
     let inputField=document.getElementById('letterInput') // get input box thing
     let guessedLetter=inputField.value.toLowerCase() //lowercasing everything
     //check and see if valid input
@@ -103,8 +104,37 @@ function guessedLetters() {
     }
 
     inputField.value=''; //empties the input box
-    document.getElementById('letterInput').focus() //refocus input field for next guess
+    document.getElementById('letterInput').focus(); //refocus input field for next guess
 }
 
+function updateWrongGuess(guessedLetter) {
+    wrongGuesses++
+    document.getElementById('wrongLetters').textContent+=`${guessedLetter}` //puts wrong guess in display
+    // document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpeg`; //updates img based on number which means whatever # guesses are there will be img for that.
 
+    if(wrongGuesses===maxMistakes) {
+        endGame(false)
+    }
+
+}
+
+function updateCorrectGuess(guessedLetter) {
+    let newDisplayedWord=''
+
+    for(let i=0; i<selectedWord.length; i++) { //scans the selected word
+        if (selectedWord[i]===guessedLetter) { //if anything in selected word matches what user guessed
+            newDisplayedWord+=guessedLetter //updates the letter
+        } else {
+        newDisplayedWord+=displayWord[i]
+        }
+    }
+
+    displayWord=newDisplayedWord;
+updateUI()
+
+if (!displayWord.includes('_')) {
+    endGame(true);
+}
+
+}
 
