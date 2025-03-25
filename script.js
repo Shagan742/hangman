@@ -28,6 +28,7 @@ function startGame(level) {
 
 
     //show game area and difficulty display + hide selection buttons
+    document.getElementById('mainHeading').classList.add('d-none')
 
     document.getElementById('gameArea').classList.remove('d-none')
     document.getElementById('gameArea').classList.add('d-block')
@@ -38,6 +39,7 @@ function startGame(level) {
     document.getElementById('difficultySelection').classList.add('d-none');
 
     document.getElementById('letterInput').focus(); //allows for not needing to press input box to start typing
+
 }
 
 function getRandomWord(level) {
@@ -74,6 +76,13 @@ function updateUI() {
 
 }
 
+document.getElementById("letterInput").addEventListener("keydown", function (event) {
+
+// if user puts in something in the input box, whatever they put in goes in the array by pressing enter
+    if (event.key === 'Enter') {       
+        guessLetter();
+    }
+})
 
 function guessLetter() {
     let inputField = document.getElementById('letterInput') // get input box thing
@@ -105,12 +114,14 @@ function guessLetter() {
 
     inputField.value = ''; //empties the input box
     document.getElementById('letterInput').focus(); //refocus input field for next guess
+
+    
 }
 
 function updateWrongGuess(guessedLetter) {
     wrongGuesses++
     document.getElementById('wrongLetters').textContent += `${guessedLetter}` //puts wrong guess in display
-    // document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpeg`; //updates img based on number which means whatever # guesses are there will be img for that.
+    document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpeg`; //updates img based on number which means whatever # guesses are there will be img for that.
 
     if (wrongGuesses === maxMistakes) {
         endGame(false)
