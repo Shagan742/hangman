@@ -121,7 +121,7 @@ function guessLetter() {
 function updateWrongGuess(guessedLetter) {
     wrongGuesses++
     document.getElementById('wrongLetters').textContent += `${guessedLetter}` //puts wrong guess in display
-    document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpeg`; //updates img based on number which means whatever # guesses are there will be img for that.
+    document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpg`; //updates img based on number which means whatever # guesses are there will be img for that.
 
     if (wrongGuesses === maxMistakes) {
         endGame(false)
