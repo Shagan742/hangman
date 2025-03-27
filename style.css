@@ -42,4 +42,14 @@ h3 {
 
 #wordDisplay {
     color:white;
+    font-size:30px;
+}
+
+#wrongLetters {
+    font-size:20px;
+}
+
+#shamrock {
+    border: 2px solid white;
+    box-shadow:0px 0px 8px 2px;
 }
