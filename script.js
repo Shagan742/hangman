@@ -118,7 +118,7 @@ function guessLetter() {
     
 }
 
-const audioWrong= new Audio('sounds/wrongAnswerSound.mp3')
+const audioWrong= new Audio('sounds/wrongAnswerSound.mp3') //saves sound as variable
 function updateWrongGuess(guessedLetter) {
     wrongGuesses++
     document.getElementById('wrongLetters').textContent += ` ${guessedLetter} ` //puts wrong guess in display
@@ -162,5 +162,24 @@ function endGame(won) {
 }
 
 function restartGame() {
-    location.reload() //resets everything
+    //clear everything
+    selectedWord = '';
+    displayWord = [];
+    wrongGuesses = 0;
+    guessedLetters = [];
+    document.getElementById('wrongLetters').textContent = 'Wrong Guesses:' //empties wrong letters
+    document.getElementById('shamrock').src=`imgs/shamrock${6}.jpg`; //reset img
+
+    //does it job to show what was hidden and hide what was shown
+    document.getElementById('mainHeading').classList.remove('d-none')
+    document.getElementById('mainHeading').classList.add('d-block')
+
+        document.getElementById('gameArea').classList.remove('d-block')
+        document.getElementById('gameArea').classList.add('d-none')
+    
+        document.getElementById('difficultyBox').classList.remove('d-block');
+        document.getElementById('difficultyBox').classList.add('d-none');
+
+        document.getElementById('difficultySelection').classList.remove('d-none')
+        document.getElementById('difficultySelection').classList.add('d-block');
 }
