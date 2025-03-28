@@ -121,7 +121,7 @@ function guessLetter() {
 const audioWrong= new Audio('sounds/wrongAnswerSound.mp3') //saves sound as variable
 function updateWrongGuess(guessedLetter) {
     wrongGuesses++
-    document.getElementById('wrongLetters').textContent += ` ${guessedLetter} ` //puts wrong guess in display
+    document.getElementById('wrongLetters').textContent += `${guessedLetter} ` //puts wrong guess in display
     document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpg`; //updates img based on number which means whatever # guesses are there will be img for that.
     audioWrong.play();
     if (wrongGuesses === maxMistakes) {
@@ -152,12 +152,17 @@ function updateCorrectGuess(guessedLetter) {
 
 }
 
+         const audioWinning= new Audio('sounds/winningSound.mp3'); //saves sound as variable
+         const audioLosing= new Audio('sounds/losingSound.mp3'); //saves sound as variable
 
 function endGame(won) {
     if (won === true) {
          setTimeout(() => alert('Congrats you won!'), 100) // Display alert after short delay
+         audioWinning.play(); //audio plays
+
     } else if (won === false) {
          setTimeout(() => alert(`Aw too bad, you lost, word was ${selectedWord}`), 100) // Display alert after short delay
+         audioLosing.play(); //audio plays
     }
 }
 
