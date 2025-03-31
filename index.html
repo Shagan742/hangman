@@ -67,15 +67,33 @@
                 </div>
 
                 <div class="col">
-                    <p id="wrongLetters" class="fw-bold text-danger">Wrong Guesses:</p>
+                    <p id="wrongLetters" class="fw-bold text-danger">Wrong Guesses: </p>
                     <img id="shamrock" class="shamrock-img" alt="shamrock" src="imgs/shamrock6.jpg">
                 </div>
 
-                <div class="col mt-4">
-                    <button id="restartBtn" class="btn btn-danger" onclick="restartGame()">Restart Game</button>
+            </div> 
+
+
+                <div id="btnRestart" class="col mt-4 justify-content-center text-center d-none">
+                    <button id="restartBtn" class="btn btn-danger " onclick="restartGame()">Restart Game</button>
                 </div>
 
-            </div> 
+
+            <div id="youWon" class="row mt-4 d-none">
+                <div class="col">
+                    <h2 id="winningStatement">
+
+                    </h2>
+                </div>
+            </div>
+
+            <div id="youLost" class="row mt-4 d-none">
+                <div class="col">
+                    <h2 id="losingStatement">
+
+                    </h2>
+                </div>
+            </div>
         </div>
         </main>
         <!-- Bootstrap JavaScript Libraries -->

@@ -33,10 +33,14 @@ function startGame(level) {
     document.getElementById('gameArea').classList.remove('d-none')
     document.getElementById('gameArea').classList.add('d-block')
 
+    document.getElementById('btnRestart').classList.remove('d-none')
+    document.getElementById('btnRestart').classList.add('d-block')
+
     document.getElementById('difficultyBox').classList.remove('d-none');
     document.getElementById('difficultyBox').classList.add('d-block');
 
     document.getElementById('difficultySelection').classList.add('d-none');
+
 
     document.getElementById('letterInput').focus(); //allows for not needing to press input box to start typing
 
@@ -59,14 +63,14 @@ function updateDifficultyDisplay(level) {
 
     if (level === 'easy') {
         difficultyBox.classList.add('easy')
-        difficultyBox.textContent = 'Difficulty: easy';
+        difficultyBox.textContent = 'Difficulty: Easy';
     } else if (level === 'medium') {
         difficultyBox.classList.add('medium')
-        difficultyBox.textContent = 'Difficulty: medium';
+        difficultyBox.textContent = 'Difficulty: Medium';
 
     } else if (level === 'hard') {
         difficultyBox.classList.add('hard')
-        difficultyBox.textContent = 'Difficulty: hard';
+        difficultyBox.textContent = 'Difficulty: Hard';
     }
 }
 
@@ -78,8 +82,8 @@ function updateUI() {
 
 document.getElementById("letterInput").addEventListener("keydown", function (event) {
 
-// if user puts in something in the input box, whatever they put in goes in the array by pressing enter
-    if (event.key === 'Enter') {       
+    // if user puts in something in the input box, whatever they put in goes in the array by pressing enter
+    if (event.key === 'Enter') {
         guessLetter();
     }
 })
@@ -115,14 +119,14 @@ function guessLetter() {
     inputField.value = ''; //empties the input box
     document.getElementById('letterInput').focus(); //refocus input field for next guess
 
-    
+
 }
 
-const audioWrong= new Audio('sounds/wrongAnswerSound.mp3') //saves sound as variable
+const audioWrong = new Audio('sounds/wrongAnswerSound.mp3') //saves sound as variable
 function updateWrongGuess(guessedLetter) {
     wrongGuesses++
     document.getElementById('wrongLetters').textContent += `${guessedLetter} ` //puts wrong guess in display
-    document.getElementById('shamrock').src=`imgs/shamrock${6-wrongGuesses}.jpg`; //updates img based on number which means whatever # guesses are there will be img for that.
+    document.getElementById('shamrock').src = `imgs/shamrock${6 - wrongGuesses}.jpg`; //updates img based on number which means whatever # guesses are there will be img for that.
     audioWrong.play();
     if (wrongGuesses === maxMistakes) {
         endGame(false)
@@ -130,7 +134,7 @@ function updateWrongGuess(guessedLetter) {
 
 }
 
-const audioCorrect= new Audio('sounds/correctAnswerSound.mp3'); //saves sound as variable
+const audioCorrect = new Audio('sounds/correctAnswerSound.mp3'); //saves sound as variable
 function updateCorrectGuess(guessedLetter) {
     let newDisplayedWord = ''
 
@@ -152,17 +156,46 @@ function updateCorrectGuess(guessedLetter) {
 
 }
 
-         const audioWinning= new Audio('sounds/winningSound.mp3'); //saves sound as variable
-         const audioLosing= new Audio('sounds/losingSound.mp3'); //saves sound as variable
+const audioWinning = new Audio('sounds/winningSound.mp3'); //saves sound as variable
+const audioLosing = new Audio('sounds/losingSound.mp3'); //saves sound as variable
 
 function endGame(won) {
     if (won === true) {
-         setTimeout(() => alert('Congrats you won!'), 100) // Display alert after short delay
-         audioWinning.play(); //audio plays
+        audioWinning.play(); //audio plays
+        document.getElementById('winningStatement').textContent = 'Congrats you won!!!!'
+        //does it job to show what was hidden and hide what was shown
+
+        document.getElementById('gameArea').classList.remove('d-block')
+        document.getElementById('gameArea').classList.add('d-none');
+
+
+
+        //displays whatever block of code i want
+        document.getElementById('youWon').classList.remove('d-none')
+        document.getElementById('youWon').classList.add('d-block');
+
+        document.getElementById('btnRestart').classList.remove('d-none')
+        document.getElementById('btnRestart').classList.add('d-block')
 
     } else if (won === false) {
-         setTimeout(() => alert(`Aw too bad, you lost, word was ${selectedWord}`), 100) // Display alert after short delay
-         audioLosing.play(); //audio plays
+
+        audioLosing.play(); //audio plays
+
+        document.getElementById('losingStatement').textContent = `Awww, you lost, too bad :((; the correct word was ${selectedWord}.`
+
+
+        //does it job to show what was hidden and hide what was shown
+        document.getElementById('gameArea').classList.remove('d-block')
+        document.getElementById('gameArea').classList.add('d-none');
+        //displays whatever block of code i want
+        document.getElementById('youLost').classList.remove('d-none')
+        document.getElementById('youLost').classList.add('d-block');
+
+        document.getElementById('youWon').classList.remove('d-block')
+        document.getElementById('youWon').classList.add('d-none');
+
+        document.getElementById('btnRestart').classList.remove('d-none')
+        document.getElementById('btnRestart').classList.add('d-block')
     }
 }
 
@@ -172,19 +205,28 @@ function restartGame() {
     displayWord = [];
     wrongGuesses = 0;
     guessedLetters = [];
-    document.getElementById('wrongLetters').textContent = 'Wrong Guesses:' //empties wrong letters
-    document.getElementById('shamrock').src=`imgs/shamrock${6}.jpg`; //reset img
+    document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ' //empties wrong letters
+    document.getElementById('shamrock').src = `imgs/shamrock${6}.jpg`; //reset img
 
     //does it job to show what was hidden and hide what was shown
     document.getElementById('mainHeading').classList.remove('d-none')
     document.getElementById('mainHeading').classList.add('d-block')
 
-        document.getElementById('gameArea').classList.remove('d-block')
-        document.getElementById('gameArea').classList.add('d-none')
-    
-        document.getElementById('difficultyBox').classList.remove('d-block');
-        document.getElementById('difficultyBox').classList.add('d-none');
+    document.getElementById('gameArea').classList.remove('d-block')
+    document.getElementById('gameArea').classList.add('d-none')
 
-        document.getElementById('difficultySelection').classList.remove('d-none')
-        document.getElementById('difficultySelection').classList.add('d-block');
+    document.getElementById('difficultyBox').classList.remove('d-block');
+    document.getElementById('difficultyBox').classList.add('d-none');
+
+    document.getElementById('difficultySelection').classList.remove('d-none')
+    document.getElementById('difficultySelection').classList.add('d-block');
+
+
+    document.getElementById('btnRestart').classList.remove('d-block')
+    document.getElementById('btnRestart').classList.add('d-none')
+
+    document.getElementById('youWon').classList.remove('d-block')
+    document.getElementById('youWon').classList.add('d-none')
+    document.getElementById('youLost').classList.remove('d-block')
+    document.getElementById('youLost').classList.add('d-none')
 }
