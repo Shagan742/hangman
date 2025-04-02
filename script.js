@@ -68,13 +68,27 @@ function updateDifficultyDisplay(level) {
     if (level === 'easy') {
         difficultyBox.classList.add('easy')
         difficultyBox.textContent = 'Difficulty: Easy';
+        difficultyBox.style.backgroundColor="rgba(10, 188, 39, 0.51)";
+        difficultyBox.style.border="2px solid rgb(5, 183, 2)";
+        difficultyBox.style.padding="10px";
+        difficultyBox.style.margin="10px auto";
+        difficultyBox.style.width="50%";
     } else if (level === 'medium') {
         difficultyBox.classList.add('medium')
         difficultyBox.textContent = 'Difficulty: Medium';
-
+        difficultyBox.style.backgroundColor="rgba(246, 255, 0, 0.51)";
+        difficultyBox.style.border="2px solid rgb(183, 177, 2)";
+        difficultyBox.style.padding="10px";
+        difficultyBox.style.margin="10px auto";
+        difficultyBox.style.width="50%";
     } else if (level === 'hard') {
         difficultyBox.classList.add('hard')
         difficultyBox.textContent = 'Difficulty: Hard';
+        difficultyBox.style.backgroundColor="rgba(188, 10, 10, 0.51)";
+        difficultyBox.style.border="2px solid rgb(183, 2, 2)";
+        difficultyBox.style.padding="10px";
+        difficultyBox.style.margin="10px auto";
+        difficultyBox.style.width="50%";
     }
 }
 

@@ -18,7 +18,7 @@ body {
 
 .easy, .medium, .hard {
     font-size:35px;
-    color:white;
+    color:black;
     font-family: "Yuji Mai", serif;
   font-weight: 400;
   font-style: normal;
@@ -70,6 +70,19 @@ h3 {
     font-family: "Madimi One", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+#guessBtn {
+    font-family: "Madimi One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:black;
+}
+
+#guessBtn:hover {
+    background-color: yellow;
+    transform:scale3d(1.1, 1.1, 1.1);
+    transition-duration: 0.1s;
 }
 
 .wordGraveyardHeading {
@@ -150,13 +163,6 @@ h3 {
     width:70%;
 }
 
-#difficultyBox {
-    background-color: rgba(10, 188, 39, 0.51);
-    border: 2px solid rgb(5, 183, 2);
-    padding:10px;
-    margin:10px auto;
-    width:50%;
-}
 
 #losingStatement, #winningStatement {
     color:green;
