@@ -1,7 +1,5 @@
 html {
-    overflow-x:hidden; 
-    overflow-y: hidden;
-}
+    overflow-x:hidden; }
 
 body {
    background-image:url(imgs/cloverbackground.jpg);
@@ -62,6 +60,8 @@ h3, .wordGraveyardHeading {
     left:0;
     height:200%;
     width:500%;
+    z-index: 30;
+    top:900px;
 }
 
 @keyframes fallingConfetti {

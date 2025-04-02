@@ -167,6 +167,7 @@ function wordGraveyard() {
     let theWordsLost=document.getElementById('lostWords')
     let theWordsWon=document.getElementById('wonWords')
 //make a for loop that scans for if the word lost/won matches any word in the array and += that in the textcontent of the p tags
+
 }
 
 
