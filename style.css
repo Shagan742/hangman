@@ -39,19 +39,19 @@ body {
 #easy:hover {
     transform:scale3d(1.1, 1.1, 1.1);
     transition-duration: 0.1s;
-    box-shadow:0px 0px 3px 1px black;
+    box-shadow:0px 0px 3px 1px rgb(68, 255, 0);
     background-color: green;
 }
 #medium:hover {
     transform:scale3d(1.1, 1.1, 1.1);
     transition-duration: 0.1s;
-    box-shadow:0px 0px 3px 1px black;
+    box-shadow:0px 0px 3px 1px rgb(255, 238, 0);
     background-color: yellow;
 }
 #hard:hover {
     transform:scale3d(1.1, 1.1, 1.1);
     transition-duration: 0.1s;
-    box-shadow:0px 0px 3px 1px black;
+    box-shadow:0px 0px 3px 1px rgb(255, 0, 0);
     background-color: red;
 }
 
@@ -62,6 +62,7 @@ body {
     font-family: "Madimi One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-shadow: 0px 0px 10px white;
 }
 
 h3 {
@@ -70,6 +71,8 @@ h3 {
     font-family: "Madimi One", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-shadow: 0px 0px 3px white;
+
 }
 
 #guessBtn {
