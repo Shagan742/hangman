@@ -1,6 +1,8 @@
+
+
 //wordlist
 
-const wordList = ['saint', 'green', 'golden', 'rainbow', 'prize', 'coin', 'gold', 'pot', 'clover', 'leprechaun', 'tradition'];
+const wordList = ['saint', 'green', 'four', 'golden', 'rainbow', 'prize', 'coin', 'gold', 'pot', 'clover', 'leprechaun', 'tradition', 'rich'];
 
 //declare variables
 
@@ -10,7 +12,7 @@ let wrongGuesses = 0;
 let guessedLetters = [];
 const maxMistakes = 6;
 let wonWords=[];
-let lostWords=[]
+let lostWords=[];
 
 //starts the game, runs everything in the game
 function startGame(level) {
@@ -18,13 +20,13 @@ function startGame(level) {
     wrongGuesses = 0;
     guessedLetters = [];
 
-    selectedWord = getRandomWord(level)
+    
+    selectedWord=getRandomWord(level);
+    
+
     displayWord = '_'.repeat(selectedWord.length);
 
-
     updateUI()
-
-
 
     updateDifficultyDisplay(level)
 
@@ -131,8 +133,7 @@ function updateWrongGuess(guessedLetter) {
     document.getElementById('shamrock').src = `imgs/shamrock${6 - wrongGuesses}.jpg`; //updates img based on number which means whatever # guesses are there will be img for that.
     audioWrong.play();
     if (wrongGuesses === maxMistakes) {
-        endGame(false)
-        lostWords.push(selectedWord);
+     endGame(false)
     }
 
 }
@@ -156,8 +157,7 @@ function updateCorrectGuess(guessedLetter) {
     updateUI()
 
     if (!displayWord.includes('_')) {
-        endGame(true);
-        wonWords.push(displayWord);
+        endGame(true)
     }
 
 }
@@ -166,7 +166,19 @@ function updateCorrectGuess(guessedLetter) {
 function wordGraveyard() {
     let theWordsLost=document.getElementById('lostWords')
     let theWordsWon=document.getElementById('wonWords')
+
 //make a for loop that scans for if the word lost/won matches any word in the array and += that in the textcontent of the p tags
+for(let j=0; j<lostWords.length; j++) { //scans to see what word in that array matches the word the user failed to guess
+    if(selectedWord===lostWords[j]) {
+        theWordsLost.textContent+=` ${lostWords[j]}  ▮`
+    }
+}
+
+for(let k=0; k<wonWords.length; k++) { //scans to see what word in that array matches the word the user succeeded to guess
+    if(selectedWord===wonWords[k]) {
+        theWordsWon.textContent+=` ${wonWords[k]}   ▮`
+    }
+}
 
 }
 
@@ -175,15 +187,22 @@ const audioWinning = new Audio('sounds/winningSound.mp3'); //saves sound as vari
 const audioLosing = new Audio('sounds/losingSound.mp3'); //saves sound as variable
 
 function endGame(won) {
+
+//find the index of selectedWord in wordlist array then remove it
+let wordIndex = wordList.indexOf(selectedWord);
+    wordList.splice(wordIndex, 1); 
+
     if (won === true) {
         audioWinning.play(); //audio plays
-        document.getElementById('winningStatement').textContent = 'Congrats you won!!!!'
+        document.getElementById('winningStatement').textContent = `Congrats you won!!!! The word was ${selectedWord}!`
         //does it job to show what was hidden and hide what was shown
 
         document.getElementById('gameArea').classList.remove('d-block')
         document.getElementById('gameArea').classList.add('d-none');
 
-
+//puts the selected word from the round into an array and then calls the graveyard function thing to do its job
+    wonWords.push(selectedWord);
+    wordGraveyard()
 
         //displays whatever block of code i want
         document.getElementById('youWon').classList.remove('d-none')
@@ -199,9 +218,12 @@ function endGame(won) {
 
         audioLosing.play(); //audio plays
 
-        document.getElementById('losingStatement').textContent = `Awww, you lost, too bad :((; the correct word was ${selectedWord}.`
+        document.getElementById('losingStatement').textContent = `Awww, you lost, too bad :(( the correct word was ${selectedWord}.`
 
-
+        //puts the selected word from the round into an array and then calls the graveyard function thing to do its job
+        lostWords.push(selectedWord);
+        wordGraveyard()
+        
         //does it job to show what was hidden and hide what was shown
         document.getElementById('gameArea').classList.remove('d-block')
         document.getElementById('gameArea').classList.add('d-none');
@@ -216,13 +238,13 @@ function endGame(won) {
         document.getElementById('btnRestart').classList.add('d-block')
     }
 }
-
 function restartGame() {
     //clear everything
     selectedWord = '';
     displayWord = [];
     wrongGuesses = 0;
     guessedLetters = [];
+
     document.getElementById('wrongLetters').textContent = 'Wrong Guesses: ' //empties wrong letters
     document.getElementById('shamrock').src = `imgs/shamrock${6}.jpg`; //reset img
 
@@ -252,4 +274,3 @@ function restartGame() {
     document.getElementById('wordsCompleted').classList.add('d-block')
 
 }
-
