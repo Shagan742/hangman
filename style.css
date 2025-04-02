@@ -1,6 +1,6 @@
 html {
     overflow-x:hidden; 
-    
+    overflow-y: hidden;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
     font-size:70px;
 }
 
-h3 {
+h3, .wordGraveyardHeading {
     color:white;
     font-size:35px;
 }
@@ -52,4 +52,26 @@ h3 {
 #shamrock {
     border: 2px solid white;
     box-shadow:0px 0px 8px 2px;
+}
+
+#confetti {
+    animation-timing-function: linear;
+    animation-duration: 5s;
+    position: absolute;
+    animation-name: fallingConfetti;
+    left:0;
+    height:200%;
+    width:500%;
+}
+
+@keyframes fallingConfetti {
+    from {
+        transform: translateY(-100%); /* Start at the top */
+        opacity:1;
+      }
+      to {
+        transform: translateY(100%); /* Fall to the bottom */
+        display:none;
+        opacity:0;
+      }
 }

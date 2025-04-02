@@ -78,8 +78,9 @@
                     <button id="restartBtn" class="btn btn-danger " onclick="restartGame()">Restart Game</button>
                 </div>
 
-
             <div id="youWon" class="row mt-4 d-none">
+                <img id="confetti" src="imgs/confetti.png">
+
                 <div class="col">
                     <h2 id="winningStatement">
 
@@ -92,6 +93,20 @@
                     <h2 id="losingStatement">
 
                     </h2>
+                </div>
+            </div>
+
+            <div id="wordsCompleted" class="row mt-4 d-none">
+                <div class="row text-center">
+                    <p class="wordGraveyardHeading ">Word Graveyard</p>
+                </div>
+                <div class="row">
+                    <p id="lostWords">
+
+                    </p>
+                    <p id="wonWords">
+
+                    </p>
                 </div>
             </div>
         </div>
@@ -109,5 +124,6 @@
             crossorigin="anonymous"
         ></script>
        <script src="script.js"></script>
+
     </body>
 </html>

@@ -9,6 +9,8 @@ let displayWord = '';
 let wrongGuesses = 0;
 let guessedLetters = [];
 const maxMistakes = 6;
+let wonWords=[];
+let lostWords=[]
 
 //starts the game, runs everything in the game
 function startGame(level) {
@@ -130,11 +132,14 @@ function updateWrongGuess(guessedLetter) {
     audioWrong.play();
     if (wrongGuesses === maxMistakes) {
         endGame(false)
+        lostWords.push(selectedWord);
     }
 
 }
 
 const audioCorrect = new Audio('sounds/correctAnswerSound.mp3'); //saves sound as variable
+
+
 function updateCorrectGuess(guessedLetter) {
     let newDisplayedWord = ''
 
@@ -152,9 +157,18 @@ function updateCorrectGuess(guessedLetter) {
 
     if (!displayWord.includes('_')) {
         endGame(true);
+        wonWords.push(displayWord);
     }
 
 }
+
+//make array of won and lost words, display each item from array for every word thats won/lost through a function
+function wordGraveyard() {
+    let theWordsLost=document.getElementById('lostWords')
+    let theWordsWon=document.getElementById('wonWords')
+//make a for loop that scans for if the word lost/won matches any word in the array and += that in the textcontent of the p tags
+}
+
 
 const audioWinning = new Audio('sounds/winningSound.mp3'); //saves sound as variable
 const audioLosing = new Audio('sounds/losingSound.mp3'); //saves sound as variable
@@ -176,6 +190,9 @@ function endGame(won) {
 
         document.getElementById('btnRestart').classList.remove('d-none')
         document.getElementById('btnRestart').classList.add('d-block')
+
+
+
 
     } else if (won === false) {
 
@@ -229,4 +246,9 @@ function restartGame() {
     document.getElementById('youWon').classList.add('d-none')
     document.getElementById('youLost').classList.remove('d-block')
     document.getElementById('youLost').classList.add('d-none')
+
+    document.getElementById('wordsCompleted').classList.remove('d-none')
+    document.getElementById('wordsCompleted').classList.add('d-block')
+
 }
+
